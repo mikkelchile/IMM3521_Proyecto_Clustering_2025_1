@@ -103,7 +103,7 @@ En términos prácticos, esta funcionalidad ayuda a:
 ├── requirements.txt
 ├── main.py
 ├── clustering.py
-├── paramaters.py        # Archivo de parámetros configurables
+├── parameters.py        # Archivo de parámetros configurables
 ├── bancos.xlsx
 └── figures/
     ├── distribucion_3d_cueq.png
