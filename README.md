@@ -27,6 +27,7 @@ La evaluación se realizó mediante métricas internas de clustering y análisis
 - Implementar algoritmos de clustering no supervisado aplicados a datos mineros.
 - Comparar los resultados usando métricas como **Silhouette Score**, **Davies-Bouldin Index** y **Calinski-Harabasz Index**.
 - Visualizar los bloques y clusters en 3D usando Plotly.
+- Incorporar información resumida de cada cluster mediante etiquetas interactivas al pasar el cursor sobre los bloques.
 - Analizar la aplicabilidad operacional de los agrupamientos generados.
 
 ---
@@ -55,6 +56,41 @@ A continuación se muestran algunas de las visualizaciones más representativas 
 |---|
 | ![Clusters Two-Stage en 3D](figures/clusters_two_stage_3d.png) |
 
+### Hover interactivo con resumen por cluster
+
+Además de la visualización 3D, el proyecto incluye una pequeña extensión interactiva: al pasar el cursor del mouse sobre un bloque en las vistas de clustering, se despliega un resumen agregado del cluster al que pertenece.
+
+| Agglomerative Clustering — cluster superficial | Agglomerative Clustering — cluster interno |
+|---|---|
+| ![Hover cluster agglomerative 3](figures/hover_agglomerative_cluster_3.png) | ![Hover cluster agglomerative 0](figures/hover_agglomerative_cluster_0.png) |
+
+| Two-Stage Clustering / 2-Estrategias — cluster con resumen |
+|---|
+| ![Hover cluster two stage](figures/hover_two_stage_cluster_0.png) |
+
+Esta interacción permite consultar rápidamente información resumida como:
+
+- **ID del cluster**
+- **Número de bloques**
+- **Ley promedio de CuEq**
+- **Ley promedio de CUT**
+- **Tonelaje total estimado**
+
+---
+
+## Funcionalidad interactiva
+
+La visualización 3D fue complementada con **hover text personalizado en Plotly**, de manera que el gráfico no solo muestre la distribución espacial de los bloques, sino que además sirva como una herramienta de inspección rápida de resultados.
+
+Al pasar el cursor sobre un bloque dentro de cualquiera de los métodos de clustering, la figura muestra un resumen del cluster correspondiente. Esta extensión resulta especialmente útil para interpretar los agrupamientos sin necesidad de consultar tablas externas por separado.
+
+En términos prácticos, esta funcionalidad ayuda a:
+
+- identificar rápidamente clusters grandes o pequeños,
+- comparar zonas de mayor o menor ley,
+- revisar la magnitud del tonelaje agrupado,
+- y evaluar si el agrupamiento tiene coherencia geológica y operacional.
+
 ---
 
 ## Estructura del repositorio
@@ -75,10 +111,13 @@ A continuación se muestran algunas de las visualizaciones más representativas 
     ├── distribucion_3d_plata.png
     ├── clusters_dbscan_3d.png
     ├── clusters_agglomerative_3d.png
-    └── clusters_two_stage_3d.png
+    ├── clusters_two_stage_3d.png
+    ├── hover_agglomerative_cluster_3.png
+    ├── hover_agglomerative_cluster_0.png
+    └── hover_two_stage_cluster_0.png
 ```
 
-> Nota: si el proyecto se sigue actualizando, conviene mantener fuera del repositorio archivos generados automáticamente como `__pycache__/`, `.DS_Store` y carpetas `__MACOSX/`.
+> Nota: si el proyecto se sigue actualizando, conviene mantener fuera del repositorio archivos generados automáticamente como `__pycache__/`, `.DS_Store`, carpetas `__MACOSX/` y entornos virtuales como `.venv/`.
 
 ---
 
@@ -178,7 +217,7 @@ El programa realiza el siguiente flujo:
 3. Normaliza las variables usadas para clustering.
 4. Ejecuta DBSCAN, Agglomerative Clustering y 2-Estrategias.
 5. Calcula estadísticas por cluster, como número de bloques, tonelaje total y leyes promedio.
-6. Genera una visualización 3D interactiva con Plotly.
+6. Genera una visualización 3D interactiva con Plotly, incluyendo información resumida por cluster al pasar el cursor sobre cada bloque.
 7. Imprime métricas de evaluación en consola.
 
 ---
