@@ -317,7 +317,7 @@ Proyecto desarrollado por el **Equipo 2** en el contexto del curso **IMM3521 - T
 Integrantes:
 
 - Matías Alarcón
-- Miguel Farias
+- [Miguel Farias](www.linkedin.com/in/miguelfariasuc)
 - Cristóbal Mi
 - Javiera Rojas-Murphy
 
