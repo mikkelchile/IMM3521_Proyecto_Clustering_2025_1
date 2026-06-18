@@ -1,14 +1,14 @@
 # Optimización y Agrupamiento de Bancos de Perforación - Proyecto TecMin
 
-Proyecto académico desarrollado en el curso **IMM3521 - Tecnologías Mineras** de la Pontificia Universidad Católica de Chile. El objetivo es aplicar técnicas de *machine learning* no supervisado para agrupar bloques de un modelo de bloques minero en unidades o polígonos de extracción con sentido espacial, geológico y operacional.
+Proyecto académico desarrollado en el curso **IMM3521 - Tecnologías Mineras** de la **Pontificia Universidad Católica de Chile**. El objetivo es aplicar técnicas de *machine learning* no supervisado para agrupar bloques de un modelo de bloques minero en unidades o polígonos de extracción con sentido espacial, geológico y operacional.
 
-El repositorio busca dejar disponible una implementación reproducible y modificable para estudiantes o personas interesadas en la aplicación de algoritmos de clustering en planificación minera de corto plazo.
+Este repositorio se publica como material educativo y de referencia para estudiantes o personas interesadas en la aplicación de algoritmos de clustering en planificación minera de corto plazo.
 
 ---
 
-## Descripción del proyecto
+## Descripción general
 
-La planificación minera de corto plazo requiere transformar un modelo de bloques en unidades de extracción que sean operativamente manejables. Estas unidades deben mantener continuidad espacial y, al mismo tiempo, ser razonablemente homogéneas en atributos relevantes como leyes minerales, densidad, tipo de material o litología.
+La planificación minera de corto plazo requiere transformar un modelo de bloques en unidades de extracción operativamente manejables. Estas unidades deben mantener continuidad espacial y, al mismo tiempo, ser razonablemente homogéneas en atributos relevantes como leyes minerales, densidad, tipo de material o litología.
 
 En este proyecto se trabajó con un archivo de entrada `bancos.xlsx`, correspondiente a bloques de dos bancos del modelo. A partir de sus coordenadas espaciales y variables geometalúrgicas, se implementaron y compararon distintos enfoques de clustering:
 
@@ -25,9 +25,35 @@ La evaluación se realizó mediante métricas internas de clustering y análisis
 - Cargar y procesar un modelo de bloques desde un archivo Excel.
 - Explorar atributos espaciales y geometalúrgicos relevantes.
 - Implementar algoritmos de clustering no supervisado aplicados a datos mineros.
-- Comparar los resultados usando métricas como Silhouette Score, Davies-Bouldin Index y Calinski-Harabasz Index.
+- Comparar los resultados usando métricas como **Silhouette Score**, **Davies-Bouldin Index** y **Calinski-Harabasz Index**.
 - Visualizar los bloques y clusters en 3D usando Plotly.
 - Analizar la aplicabilidad operacional de los agrupamientos generados.
+
+---
+
+## Galería visual
+
+A continuación se muestran algunas de las visualizaciones más representativas del proyecto. Para el README se incorporaron capturas recortadas y renombradas, de manera que se vea directamente la parte relevante de cada figura.
+
+### Distribución de variables del modelo de bloques
+
+| Cobre equivalente (`cueq`) | Oro (`au`) |
+|---|---|
+| ![Distribución 3D de CuEq](figures/distribucion_3d_cueq.png) | ![Distribución 3D de oro](figures/distribucion_3d_oro.png) |
+
+| Plata (`ag`) |
+|---|
+| ![Distribución 3D de plata](figures/distribucion_3d_plata.png) |
+
+### Resultados de clustering
+
+| DBSCAN | Agglomerative Clustering |
+|---|---|
+| ![Clusters DBSCAN en 3D](figures/clusters_dbscan_3d.png) | ![Clusters Agglomerative en 3D](figures/clusters_agglomerative_3d.png) |
+
+| Two-Stage Clustering / 2-Estrategias |
+|---|
+| ![Clusters Two-Stage en 3D](figures/clusters_two_stage_3d.png) |
 
 ---
 
@@ -35,15 +61,24 @@ La evaluación se realizó mediante métricas internas de clustering y análisis
 
 ```text
 .
-├── main.py              # Script principal del proyecto
-├── clustering.py        # Funciones auxiliares de clustering y visualización
-├── parameters.py        # Parámetros configurables de los algoritmos
-├── bancos.xlsx          # Datos de entrada del modelo de bloques
-├── README.md            # Documentación del proyecto
-└── Informe Final TecMin.pdf  # Informe académico del proyecto, opcional
+├── .gitignore
+├── LICENSE
+├── README.md
+├── requirements.txt
+├── main.py
+├── clustering.py
+├── paramaters.py        # Archivo de parámetros configurables
+├── bancos.xlsx
+└── figures/
+    ├── distribucion_3d_cueq.png
+    ├── distribucion_3d_oro.png
+    ├── distribucion_3d_plata.png
+    ├── clusters_dbscan_3d.png
+    ├── clusters_agglomerative_3d.png
+    └── clusters_two_stage_3d.png
 ```
 
-> Nota: si el repositorio será público, se recomienda eliminar archivos generados automáticamente como `__pycache__/`, `.DS_Store` y carpetas `__MACOSX/`.
+> Nota: si el proyecto se sigue actualizando, conviene mantener fuera del repositorio archivos generados automáticamente como `__pycache__/`, `.DS_Store` y carpetas `__MACOSX/`.
 
 ---
 
@@ -104,18 +139,19 @@ Parámetros principales:
 Se recomienda crear un entorno virtual antes de ejecutar el proyecto.
 
 ```bash
-python -m venv venv
-source venv/bin/activate      # macOS/Linux
-# venv\Scripts\activate      # Windows
+python3 -m venv .venv
+source .venv/bin/activate      # macOS/Linux
+# .venv\Scripts\activate      # Windows
 ```
 
-Luego instala las dependencias:
+Luego instala las dependencias con:
 
 ```bash
-pip install pandas numpy scikit-learn plotly openpyxl
+python -m pip install --upgrade pip
+pip install -r requirements.txt
 ```
 
-Opcionalmente, puedes crear un archivo `requirements.txt` con:
+El archivo `requirements.txt` contiene:
 
 ```text
 pandas
@@ -149,7 +185,7 @@ El programa realiza el siguiente flujo:
 
 ## Configuración de parámetros
 
-Los parámetros principales se editan en `parameters.py`:
+Los parámetros principales se editan en `paramaters.py`:
 
 ```python
 # DBSCAN
@@ -191,23 +227,7 @@ El proyecto calcula tres métricas internas de validación de clustering:
 | Davies-Bouldin Index | Mide similitud entre clusters. Valores más bajos indican menor solapamiento. |
 | Calinski-Harabasz Index | Mide separación entre clusters respecto a la dispersión interna. Valores más altos indican mejor estructura. |
 
-En el informe académico, Agglomerative Clustering obtuvo el mejor desempeño numérico general, mientras que DBSCAN presentó un buen comportamiento en Davies-Bouldin. El enfoque 2-Estrategias resultó especialmente interesante desde el punto de vista operacional, al integrar criterios espaciales y de ley mineral.
-
----
-
-## Visualización
-
-La visualización se realiza con `plotly.graph_objects.Scatter3d`, permitiendo inspeccionar:
-
-- Distribución espacial de los bloques.
-- Ley de cobre equivalente (`cueq`).
-- Ley de oro (`au`).
-- Ley de plata (`ag`).
-- Clusters generados por DBSCAN.
-- Clusters generados por Agglomerative Clustering.
-- Clusters generados por 2-Estrategias.
-
-La figura interactiva permite alternar entre atributos, bancos y métodos de clustering desde menús desplegables.
+En el informe académico, **Agglomerative Clustering** obtuvo el mejor desempeño numérico general, mientras que **DBSCAN** presentó un buen comportamiento en Davies-Bouldin. El enfoque **2-Estrategias** resultó especialmente interesante desde el punto de vista operacional, al integrar criterios espaciales y de ley mineral.
 
 ---
 
@@ -247,13 +267,13 @@ En términos prácticos, la selección del algoritmo depende del objetivo del an
 
 ## Referencia principal
 
-Tabesh, M., & Askari-Nasab, H. (2011). *Two-stage clustering algorithm for block aggregation in open pit mines*. Mining Technology, 120(3), 158-169.
+Tabesh, M., & Askari-Nasab, H. (2011). *Two-stage clustering algorithm for block aggregation in open pit mines*. *Mining Technology, 120*(3), 158-169.
 
 ---
 
 ## Autores
 
-Proyecto desarrollado por el Equipo 2 en el contexto del curso IMM3521 - Tecnologías Mineras, Departamento de Ingeniería de Minería, Pontificia Universidad Católica de Chile.
+Proyecto desarrollado por el **Equipo 2** en el contexto del curso **IMM3521 - Tecnologías Mineras**, Departamento de Ingeniería de Minería, Pontificia Universidad Católica de Chile.
 
 Integrantes:
 
