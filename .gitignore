@@ -1,11 +1,20 @@
 # Python cache
+
 __pycache__/
+
 *.py[cod]
 
 # macOS
+
+# macOS
+
 .DS_Store
+
 __MACOSX/
 
 # Virtual environments
+
 venv/
+
 .env/
+
