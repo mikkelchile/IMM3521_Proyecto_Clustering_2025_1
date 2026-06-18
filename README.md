@@ -310,6 +310,13 @@ Tabesh, M., & Askari-Nasab, H. (2011). *Two-stage clustering algorithm for block
 
 ---
 
+## Uso de herramientas de IA generativa
+
+Durante el desarrollo del proyecto se utilizaron herramientas de inteligencia artificial generativa, incluyendo modelos de lenguaje como ChatGPT, como apoyo complementario en distintas etapas del trabajo. Su uso estuvo orientado principalmente a la generación de ideas, revisión de estructura del código, depuración de errores, mejora de la documentación, redacción del README y organización general del repositorio.
+
+Las decisiones metodológicas, la selección de algoritmos, la interpretación de resultados, la validación de métricas y el análisis minero-operacional fueron desarrollados y revisados por el equipo. Por lo tanto, el uso de IA se considera una herramienta de asistencia técnica y documental, no un reemplazo del criterio ingenieril ni de la autoría académica del proyecto.
+
+---
 ## Autores
 
 Proyecto desarrollado por el **Equipo 2** en el contexto del curso **IMM3521 - Tecnologías Mineras**, Departamento de Ingeniería de Minería, Pontificia Universidad Católica de Chile.
