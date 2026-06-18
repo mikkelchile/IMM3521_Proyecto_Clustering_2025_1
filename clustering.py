@@ -7,8 +7,8 @@ import plotly.graph_objects as go
 # ========================
 # 1. Cargar datos
 # ========================
-def load_data(path="fase_banco_proyecto2.xlsx"):
-    df = pd.read_excel(path, sheet_name="Hoja1")
+def load_data(path="bancos.xlsx"):
+    df = pd.read_excel(path)
     return df
 
 # ========================
