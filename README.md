@@ -224,7 +224,7 @@ El programa realiza el siguiente flujo:
 
 ## Configuración de parámetros
 
-Los parámetros principales se editan en `paramaters.py`:
+Los parámetros principales se editan en `parameters.py`:
 
 ```python
 # DBSCAN
