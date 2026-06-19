@@ -320,7 +320,7 @@ Las decisiones metodológicas, la selección de algoritmos, la interpretación d
 
 ## Informe académico
 
-Este repositorio resume la implementación computacional y los principales resultados del proyecto. El informe académico completo fue desarrollado como entrega final del curso IMM3521 - Tecnologías Mineras. Por motivos de privacidad académica y uso responsable de los datos, el documento completo no se incluye directamente en el repositorio público, pero puede ser compartido bajo solicitud.
+Este repositorio resume la implementación computacional y los principales resultados del proyecto. El informe académico completo fue desarrollado como entrega final del curso IMM3521 - Tecnologías Mineras. Por motivos de privacidad académica y uso responsable de los datos, el documento completo no se incluye directamente en el repositorio público, pero **puede ser compartido bajo solicitud**.
 
 --- 
 
